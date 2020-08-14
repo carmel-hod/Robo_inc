@@ -8,36 +8,7 @@
     android:layout_height="match_parent"
     android:paddingTop="?attr/actionBarSize">
 
-    <LinearLayout
-        android:layout_width="410.5dp"
-        android:layout_height="616dp"
-        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <ImageButton
-                android:id="@+id/bulid"
-                android:layout_width="205.25dp"
-                android:layout_height="308dp"
-                android:background="@null"
-                android:clickable="true"
-                android:onClick="build"
-                android:src="button" />
-
-            <ImageButton
-                android:src="button"
-                android:layout_height="308dp"
-                android:layout_width="205.25dp"
-                android:id="@+id/mine"
-                android:clickable="true"
-                android:onClick="mine"
-                android:background="@null" />
-        </LinearLayout>
-
-
-    </LinearLayout>
 
 
 

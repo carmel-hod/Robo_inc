@@ -16,7 +16,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"/>
+            android:orientation="horizontal">
             <ImageButton
                 android:id="@+id/bulid"
                 android:layout_width="205.25dp"
@@ -34,7 +34,8 @@
                 android:clickable="true"
                 android:onClick="mine"
                 android:background="@null" />
-    </LinearLayout>
+        </LinearLayout>
+
 
     </LinearLayout>
 

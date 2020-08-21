@@ -1,6 +1,9 @@
 package robo.inc;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -12,10 +15,15 @@ import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TextView matrials;
+    private Game_Master gm = Game_Master.getInstance();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        matrials = findViewById(R.id.matriels);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -25,6 +33,18 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+        final Handler handler = new Handler(Looper.getMainLooper()   );
+        handler.postDelayed(
+                new Runnable(){
+                    public void run(){
+                        matrials.setText("Mat" + Integer.toString(gm.matrials));
+                        handler.postDelayed(this, 100);
+                    }
+                }, 100);
+
+
     }
+
+
 
 }

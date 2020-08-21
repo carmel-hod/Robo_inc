@@ -28,8 +28,8 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <LinearLayout
-            android:layout_width="410.5dp"
-            android:layout_height="616dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
@@ -38,12 +38,13 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/bulid"
+                    android:id="@+id/build"
                     android:layout_width="205.25dp"
                     android:layout_height="308dp"
-                    android:background="@null"
                     android:clickable="true"
-                    android:onClick="build" />
+                    android:onClick="build"
+                    android:src="@drawable/build"
+                    android:background="#900"/>
 
                 <ImageButton
                     android:layout_height="308dp"
@@ -51,7 +52,8 @@
                     android:id="@+id/mine"
                     android:clickable="true"
                     android:onClick="mine"
-                    android:background="@null"/>
+                    android:background="#009"
+                    android:src="@drawable/minining"/>
             </LinearLayout>
 
             <LinearLayout
@@ -62,9 +64,10 @@
                     android:id="@+id/advertise"
                     android:layout_width="205.25dp"
                     android:layout_height="308dp"
-                    android:background="@null"
+                    android:background="#009"
                     android:clickable="true"
-                    android:onClick="advertise"/>
+                    android:onClick="advertise"
+                    android:src="@drawable/add"/>
 
                 <ImageButton
                     android:layout_height="308dp"
@@ -72,7 +75,8 @@
                     android:id="@+id/reserch"
                     android:clickable="true"
                     android:onClick="reserch"
-                    android:background="@null" />
+                    android:background="#900"
+                    android:src="@drawable/ssci"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

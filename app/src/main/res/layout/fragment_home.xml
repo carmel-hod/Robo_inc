@@ -38,6 +38,7 @@
                 android:orientation="horizontal">
 
                 <ImageButton
+                    android:paddingTop="30dp"
                     android:id="@+id/build"
                     android:layout_width="205.25dp"
                     android:layout_height="308dp"
@@ -47,6 +48,7 @@
                     android:background="#900"/>
 
                 <ImageButton
+                    android:paddingTop="30dp"
                     android:layout_height="308dp"
                     android:layout_width="205.25dp"
                     android:id="@+id/mine"
@@ -61,6 +63,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <ImageButton
+                    android:paddingTop="30dp"
                     android:id="@+id/advertise"
                     android:layout_width="205.25dp"
                     android:layout_height="308dp"
@@ -70,6 +73,7 @@
                     android:src="@drawable/add"/>
 
                 <ImageButton
+                    android:paddingTop="30dp"
                     android:layout_height="308dp"
                     android:layout_width="205.25dp"
                     android:id="@+id/reserch"

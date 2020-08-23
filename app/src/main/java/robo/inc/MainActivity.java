@@ -16,6 +16,8 @@ import androidx.navigation.ui.NavigationUI;
 public class MainActivity extends AppCompatActivity {
 
     private TextView matrials;
+    private TextView robots;
+    private TextView hype;
     private Game_Master gm = Game_Master.getInstance();
 
 
@@ -24,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         matrials = findViewById(R.id.matriels);
+        robots = findViewById(R.id.robots);
+        hype = findViewById(R.id.hype);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -37,7 +41,9 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(
                 new Runnable(){
                     public void run(){
-                        matrials.setText("Mat" + Integer.toString(gm.matrials));
+                        matrials.setText("Matrials:" + Integer.toString(gm.matrials));
+                        robots.setText("robots:" + Integer.toString(gm.robots));
+                        hype.setText("hype:" + Integer.toString(gm.advertise_points));
                         handler.postDelayed(this, 100);
                     }
                 }, 100);

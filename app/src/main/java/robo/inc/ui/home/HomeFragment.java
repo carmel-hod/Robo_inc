@@ -32,7 +32,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                gm.matrials++;
+                gm.gatherMatrials();
             }
 
         });
@@ -42,7 +42,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                gm.robots++;
+                gm.makeRobot();
             }
 
         });
@@ -52,7 +52,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                gm.advertise_points++;
+                gm.advertise();
             }
 
         });
@@ -62,7 +62,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                gm.scince_points++;
+                gm.reserch();
             }
 
         });

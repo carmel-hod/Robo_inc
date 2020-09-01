@@ -14,9 +14,12 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView matrials;
+    private Random rd = new Random();
     private TextView robots;
     private TextView hype;
     private TextView sci;
@@ -41,20 +44,17 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navView, navController);
+
+//      main loop
         final Handler handler = new Handler(Looper.getMainLooper()   );
         handler.postDelayed(
                 new Runnable(){
                     public void run(){
-                        matrials.setText("M:" + Integer.toString(gm.matrials));
-                        robots.setText("R:" + Integer.toString(gm.robots));
-                        money.setText("$:" + Integer.toString(gm.money));
-                        hype.setText("H:" + Integer.toString(gm.advertise_points));
-                        sci.setText("S:" + Integer.toString(gm.scince_points));
-                        robots.setTypeface(null, Typeface.BOLD);
-                        hype.setTypeface(null, Typeface.BOLD);
-                        money.setTypeface(null, Typeface.BOLD);
-                        sci.setTypeface(null, Typeface.BOLD);
-                        matrials.setTypeface(null, Typeface.BOLD);
+                        gm.sellRobots();
+//                        number of robots sold per 100ms not happy
+                        gm.sellage_Amount = (int) (Math.abs(rd.nextGaussian() * gm.hype * 0.1));
+                        gm.hype=gm.hype*0.99;
+                        updateUI();
                         handler.postDelayed(this, 100);
                     }
                 }, 100);
@@ -62,6 +62,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void updateUI() {
+        matrials.setText("M:" + Integer.toString(gm.matrials));
+        robots.setText("R:" + Integer.toString(gm.robots));
+        money.setText("$:" + Integer.toString(gm.money));
+        hype.setText("H:" + Integer.toString((int)gm.hype));
+        sci.setText("S:" + Integer.toString(gm.scince_points));
+        robots.setTypeface(null, Typeface.BOLD);
+        hype.setTypeface(null, Typeface.BOLD);
+        money.setTypeface(null, Typeface.BOLD);
+        sci.setTypeface(null, Typeface.BOLD);
+        matrials.setTypeface(null, Typeface.BOLD);
+    }
 
 
 }

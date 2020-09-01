@@ -5,11 +5,13 @@ public class Game_Master {
     public int matrials = 0;
     public int scince_points = 0;
     public int robots = 0;
-    public int advertise_points = 0;
+    public double hype = 0;
     public int gathering_rate = 1;
     public int reserch_rate = 1;
     public int manufacture_amount = 1;
     public int manufacture_cost = 2;
+    public int sellage_Amount = 1;
+    public int robot_cost = 1;
 
     static private Game_Master singletone = null;
 
@@ -35,11 +37,25 @@ public class Game_Master {
         return true;
     }
     public boolean advertise() {
-        advertise_points++;
+        hype++;
         return true;
     }
     public boolean reserch() {
         scince_points+=reserch_rate;
+        return true;
+    }
+
+    public boolean sellRobots() {
+        if(robots == 0 || hype < 1) {
+            return false;
+        }
+        if(robots < sellage_Amount){
+            money += robots * robot_cost;
+            robots = 0;
+            return true;
+        }
+        robots-=sellage_Amount;
+        money += sellage_Amount * robot_cost;
         return true;
     }
 }

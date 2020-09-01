@@ -6,11 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -18,24 +13,25 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".5"
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:paddingTop="30dp"
                     android:id="@+id/build"
-                    android:layout_width="205.25dp"
-                    android:layout_height="308dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".5"
                     android:clickable="true"
                     android:onClick="build"
                     android:src="@drawable/build"
                     android:background="#900"/>
 
                 <ImageButton
-                    android:paddingTop="30dp"
-                    android:layout_height="308dp"
-                    android:layout_width="205.25dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".5"
                     android:id="@+id/mine"
                     android:clickable="true"
                     android:onClick="mine"
@@ -44,23 +40,24 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".5"
                 android:orientation="horizontal">
                 <ImageButton
-                    android:paddingTop="30dp"
                     android:id="@+id/advertise"
-                    android:layout_width="205.25dp"
-                    android:layout_height="308dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".5"
                     android:background="#009"
                     android:clickable="true"
                     android:onClick="advertise"
                     android:src="@drawable/add"/>
 
                 <ImageButton
-                    android:paddingTop="30dp"
-                    android:layout_height="308dp"
-                    android:layout_width="205.25dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".5"
                     android:id="@+id/reserch"
                     android:clickable="true"
                     android:onClick="reserch"
@@ -68,5 +65,4 @@
                     android:src="@drawable/ssci"/>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

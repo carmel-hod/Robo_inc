@@ -36,7 +36,7 @@
                     android:clickable="true"
                     android:onClick="mine"
                     android:background="#009"
-                    android:src="@drawable/minining"/>
+                    android:src="@drawable/mining"/>
             </LinearLayout>
 
             <LinearLayout

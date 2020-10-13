@@ -14,7 +14,15 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Date;
 import java.util.Random;
+
+import robo.inc.autoclickers.Autoclicker_base;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,18 +32,46 @@ public class MainActivity extends AppCompatActivity {
     private TextView hype;
     private TextView sci;
     private TextView money;
+    private TextView robotSpeed;
+    private TextView hypeSpeed;
+    private TextView sciSpeed;
+    private TextView matrialsSpeed;
     private Game_Master gm = Game_Master.getInstance();
+
+    double matLast = 0;
+    double sciLast = 0;
+    double robtLast = 0;
+    double hypeLast = 0;
+    int iterationNumber = 0;
+    double matPerSec;
+    double sciPerSec;
+    double robotPerSec;
+    double hypePerSec;
+
+    private static MainActivity instance;
+
+    public MainActivity() throws IOException {
+    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         setContentView(R.layout.activity_main);
         matrials = findViewById(R.id.matriels);
         robots = findViewById(R.id.robots);
         money = findViewById(R.id.money);
         hype = findViewById(R.id.hype);
         sci = findViewById(R.id.sci);
+        robotSpeed = findViewById(R.id.robotsSpeed);
+        hypeSpeed = findViewById(R.id.hypeSpeed);
+        sciSpeed = findViewById(R.id.sciSpeed);
+        matrialsSpeed = findViewById(R.id.matrielsSpeed);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -44,30 +80,77 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navView, navController);
+        try {
+            onCreateFileManagment();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        instance = this;
+
 
 //      main loop
         final Handler handler = new Handler(Looper.getMainLooper()   );
         handler.postDelayed(
                 new Runnable(){
                     public void run(){
+                        iterationNumber++;
+                        int sinceLastSec = iterationNumber%10;
+
+
                         gm.sellRobots();
-//                        number of robots sold per 100ms not happy
+                        //number of robots sold per 100ms not happy
+                        autoclickGenerate();
                         gm.sellage_Amount = (int) (Math.abs(rd.nextGaussian() * gm.hype * 0.1));
-                        gm.hype=gm.hype*0.99;
-                        updateUI();
+                        gm.hype*=0.99;
+
+                        if(sinceLastSec == 0){
+                            matPerSec = gm.matrials - matLast;
+                            sciPerSec = gm.scince_points - sciLast;
+                            robotPerSec = gm.robots - robtLast;
+                            hypePerSec = gm.hype - hypeLast;
+                            matLast = gm.matrials;
+                            sciLast = gm.scince_points;
+                            robtLast = gm.robots;
+                            hypeLast = gm.hype;
+                        }
+
+
+                        updateUI(matPerSec, sciPerSec, robotPerSec, hypePerSec);
+
                         handler.postDelayed(this, 100);
+
                     }
                 }, 100);
-
-
     }
 
-    private void updateUI() {
-        matrials.setText("M:" + Integer.toString(gm.matrials));
-        robots.setText("R:" + Integer.toString(gm.robots));
-        money.setText("$:" + Integer.toString(gm.money));
-        hype.setText("H:" + Integer.toString((int)gm.hype));
-        sci.setText("S:" + Integer.toString(gm.scince_points));
+    @Override
+    protected void onStop() {
+        super.onStop();
+        File file = new File(getFilesDir(), "Auto.json");
+        gm.time = System.currentTimeMillis() / 1000L;
+        try (FileOutputStream stream = new FileOutputStream(file)) {
+            stream.write(gm.toJson().getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static MainActivity getInstance() {
+        return instance;
+    }
+
+    private void updateUI(double matS, double sciS, double robtS, double hypeS) {
+        matrials.setText("M:" + ((int) gm.matrials));
+        robots.setText("R:" + ((int)gm.robots));
+        money.setText("$:" + (gm.money));
+        hype.setText("H:" + ((int)gm.hype));
+        sci.setText("S:" + ((int)gm.scince_points));
+        matrialsSpeed.setText("+" + String.format("%.1f", matS) + "/s");
+        robotSpeed.setText("+" + String.format("%.1f", robtS) + "/s");
+        hypeSpeed.setText("" + String.format("%.1f", hypeS) + "/s");
+        sciSpeed.setText("+" + String.format("%.1f", sciS) + "/s");
         robots.setTypeface(null, Typeface.BOLD);
         hype.setTypeface(null, Typeface.BOLD);
         money.setTypeface(null, Typeface.BOLD);
@@ -75,5 +158,47 @@ public class MainActivity extends AppCompatActivity {
         matrials.setTypeface(null, Typeface.BOLD);
     }
 
+    private void autoclickGenerate(){
+        for(int i=0; i < gm.mining.size(); i++){
+            gm.matrials += gm.mining.get(i).getAmountOwned() * (gm.mining.get(i).getGatherSpeed()/10);
+        }
+        for(int i=0; i < gm.science.size(); i++){
+            gm.scince_points += gm.science.get(i).getAmountOwned() * (gm.science.get(i).getGatherSpeed()/10);
+        }
+        for(int i=0; i < gm.build.size(); i++){
+            Autoclicker_base auto = gm.build.get(i);
+            double materialNeeded = gm.manufacture_cost * auto.getAmountOwned() * auto.getGatherSpeed() / 10;
+            if(gm.matrials < materialNeeded){
+                gm.robots += (gm.matrials - gm.matrials%2)/2;
+                gm.matrials %= 2;
+            }
+            else{
+                gm.robots += auto.getAmountOwned() * (auto.getGatherSpeed()/10);
+                gm.matrials -= materialNeeded;
+            }
+        }
+    }
+    private void onCreateFileManagment() throws IOException {
+        File file = new File(getFilesDir(), "Auto.json");
+        if(!file.exists()){
+            try (FileOutputStream stream = new FileOutputStream(file)) {
+                stream.write(gm.loadJSON(R.raw.autoclickers).getBytes());
+            }
+        }
+    }
 
+    public String loadFile(String name) throws IOException {
+        File file = new File(getFilesDir(), name);
+        int length = (int) file.length();
+        byte[] bytes = new byte[length];
+
+        FileInputStream in = new FileInputStream(file);
+        try {
+            in.read(bytes);
+        } finally {
+            in.close();
+        }
+
+        return new String(bytes);
+    }
 }

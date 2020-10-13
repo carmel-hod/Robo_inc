@@ -1,0 +1,80 @@
+{
+	"gm": {
+		"resources" : {
+			"money" : 0,
+			"robots" : 0,
+			"hype" : 0,
+			"materials" : 0,
+			"science" : 0,
+			"date" : 0
+		},
+		"autocliker": {
+			"mining": [
+				{
+					"id": "0",
+					"name": "Miner 1",
+					"cost": "5",
+					"materiel": "0",
+					"photo": "mining",
+					"description": "A guy with a pickaxe",
+					"gatherRate": "0.5",
+					"active": "true",
+					"priceGrowthRate": "0.1",
+					"amountOwned": "0"
+				},
+				{
+					"id": "1",
+					"name": "Miner 2",
+					"cost": "20",
+					"materiel": "0",
+					"photo": "mining",
+					"description": "dyminte",
+					"gatherRate": "2",
+					"active": "false",
+					"priceGrowthRate": "0.1",
+					"amountOwned": "0"
+				}
+			],
+			"build": [
+				{
+					"id": "0",
+					"name": "Assembly 1",
+					"cost": "20",
+					"materiel": "5",
+					"photo": "build",
+					"description": "Unpaid Intern",
+					"gatherRate": "1",
+					"active": "true",
+					"priceGrowthRate": "0.1",
+					"amountOwned": "0"
+				},
+				{
+					"id": "1",
+					"name": "Assembly 2",
+					"cost": "1",
+					"materiel": "0",
+					"photo": "build",
+					"description": "Flash",
+					"gatherRate": "100",
+					"active": "true",
+					"priceGrowthRate": "0.1",
+					"amountOwned": "0"
+				}
+			],
+			"science": [
+				{
+					"id": "0",
+					"name": "Researcher 1",
+					"cost": "50",
+					"materiel": "0",
+					"photo": "ssci",
+					"description": "Undergrad research assistant",
+					"gatherRate": "0.2",
+					"active": "true",
+					"priceGrowthRate": "0.25",
+					"amountOwned": "0"
+				}
+			]
+		}
+	}
+}

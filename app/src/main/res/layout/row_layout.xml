@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:padding="5dip"
+    >
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="#DAE8FC">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="54dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="6dip"
+            android:layout_marginBottom="0dp"
+            android:src="@mipmap/ic_launcher" />
+
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="1dip"
+            android:background="#0079D6">
+
+
+            <TableRow  >
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:textSize="20sp"
+                    android:text="Name" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:clickable="true"
+                    android:textAlignment="center"
+                    android:text="Buy:"
+                    />
+
+                <TextView
+                    android:id="@+id/x1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:textAlignment="center"
+                    android:text="1x"
+                    android:onClick="x1"
+                    android:clickable="true"
+                    android:background="#00f0ff"/>
+
+                <TextView
+                    android:id="@+id/x10"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:clickable="true"
+                    android:textAlignment="center"
+                    android:text="10x"
+                    android:onClick="x10"
+                    android:contextClickable="true"
+                    android:background="#00f0ff"/>
+            </TableRow>
+            <TableRow >
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+                <TextView
+                    android:id="@+id/gathering_speed"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="" />
+                <TextView
+                    android:id="@+id/amount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </TableRow>
+
+
+        </TableLayout>
+
+
+    </LinearLayout>
+    <!--
+    <TextView
+        android:id="@+id/firstLine"
+        android:layout_width="149dp"
+        android:layout_height="32dp"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-162dp"
+        android:layout_marginLeft="-15dp"
+        android:layout_marginEnd="206dp"
+        android:layout_marginRight="235dp"
+        android:layout_marginBottom="39dp"
+        android:layout_toEndOf="@+id/secondLine"
+        android:layout_toRightOf="@id/icon"
+        android:gravity="center_vertical"
+        android:text="Example application"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/secondLine"
+        android:layout_width="147dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="198dp"
+        android:layout_marginBottom="0dp"
+        android:layout_toRightOf="@id/icon"
+        android:singleLine="true"
+        android:text="Description"
+        android:textSize="18dp" />
+
+-->
+
+
+</RelativeLayout>

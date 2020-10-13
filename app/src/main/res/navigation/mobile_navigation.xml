@@ -15,7 +15,7 @@
         android:id="@+id/navigation_dashboard"
         android:name="robo.inc.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_autoclickers" />
 
     <fragment
         android:id="@+id/navigation_notifications"

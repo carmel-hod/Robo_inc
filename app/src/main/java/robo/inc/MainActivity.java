@@ -1,14 +1,20 @@
 package robo.inc;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -38,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView matrialsSpeed;
     private Game_Master gm = Game_Master.getInstance();
 
+
     double matLast = 0;
     double sciLast = 0;
     double robtLast = 0;
@@ -48,11 +55,23 @@ public class MainActivity extends AppCompatActivity {
     double robotPerSec;
     double hypePerSec;
 
+    // false == save data
+    boolean wipeData = false;
+
     private static MainActivity instance;
 
     public MainActivity() throws IOException {
     }
 
+    private ActivityResultLauncher<String> requestPermissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+                if (isGranted) {
+                    // Permission is granted. Continue the action or workflow in your
+                    // app.
+                } else {
+                    Log.e("Permmision", "no read external storage permition");
+                }
+            });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +81,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+        if (ContextCompat.checkSelfPermission(
+                getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) !=
+                PackageManager.PERMISSION_GRANTED) {
+            requestPermissionLauncher.launch(
+                    Manifest.permission.READ_EXTERNAL_STORAGE);
+        }
+        if (ContextCompat.checkSelfPermission(
+                getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
+                PackageManager.PERMISSION_GRANTED) {
+            requestPermissionLauncher.launch(
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
         setContentView(R.layout.activity_main);
         matrials = findViewById(R.id.matriels);
         robots = findViewById(R.id.robots);
@@ -142,11 +174,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateUI(double matS, double sciS, double robtS, double hypeS) {
-        matrials.setText("M:" + ((int) gm.matrials));
-        robots.setText("R:" + ((int)gm.robots));
-        money.setText("$:" + (gm.money));
-        hype.setText("H:" + ((int)gm.hype));
-        sci.setText("S:" + ((int)gm.scince_points));
+        matrials.setText("M:" + shrinkNum((int) gm.matrials));
+        robots.setText("R:" + shrinkNum((int) gm.robots));
+        money.setText("$:" + shrinkNum((int) gm.money));
+        hype.setText("H:" + shrinkNum((int) gm.hype));
+        sci.setText("S:" + shrinkNum((int) gm.scince_points));
         matrialsSpeed.setText("+" + String.format("%.1f", matS) + "/s");
         robotSpeed.setText("+" + String.format("%.1f", robtS) + "/s");
         hypeSpeed.setText("" + String.format("%.1f", hypeS) + "/s");
@@ -180,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void onCreateFileManagment() throws IOException {
         File file = new File(getFilesDir(), "Auto.json");
-        if(!file.exists()){
+        if(!file.exists() || wipeData == true){
             try (FileOutputStream stream = new FileOutputStream(file)) {
                 stream.write(gm.loadJSON(R.raw.autoclickers).getBytes());
             }
@@ -200,5 +232,20 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return new String(bytes);
+    }
+    public String shrinkNum(int num) {
+        if(num < 1000){
+            return "" + num;
+        }
+        else if(num >= 1000 && num < (Math.pow(10.0,6))){
+            return num/1000 + "K";
+        }
+        else if(num >= (Math.pow(10.0,6)) && num < (Math.pow(10.0,9))){
+            return (int)(num/(Math.pow(10.0,6))) + "M";
+        }
+        else if(num >= (Math.pow(10.0,9)) && num < (Math.pow(10.0,12))){
+            return (int)(num/(Math.pow(10.0,9))) + "B";
+        }
+        return "";
     }
 }

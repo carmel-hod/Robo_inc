@@ -212,7 +212,7 @@ public class Game_Master {
         return true;
     }
     public boolean advertise() {
-        hype++;
+        hype+=100;
         return true;
     }
     public boolean reserch() {

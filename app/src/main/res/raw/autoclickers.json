@@ -1,7 +1,7 @@
 {
 	"gm": {
 		"resources" : {
-			"money" : 0,
+			"money" : 1000000,
 			"robots" : 0,
 			"hype" : 0,
 			"materials" : 0,
@@ -12,26 +12,50 @@
 			"mining": [
 				{
 					"id": "0",
-					"name": "Miner 1",
+					"name": "Miner",
 					"cost": "5",
 					"materiel": "0",
 					"photo": "mining",
 					"description": "A guy with a pickaxe",
 					"gatherRate": "0.5",
 					"active": "true",
-					"priceGrowthRate": "0.1",
+					"priceGrowthRate": "5",
 					"amountOwned": "0"
 				},
 				{
 					"id": "1",
-					"name": "Miner 2",
+					"name": "sticks of dyminte",
 					"cost": "20",
 					"materiel": "0",
 					"photo": "mining",
-					"description": "dyminte",
+					"description": "dyminte go boom boom",
 					"gatherRate": "2",
 					"active": "false",
-					"priceGrowthRate": "0.1",
+					"priceGrowthRate": "5",
+					"amountOwned": "0"
+				},
+				{
+					"id": "2",
+					"name": "Drill team",
+					"cost": "50",
+					"materiel": "0",
+					"photo": "mining",
+					"description": "dyminte go boom boom",
+					"gatherRate": "8",
+					"active": "false",
+					"priceGrowthRate": "5",
+					"amountOwned": "0"
+				},
+				{
+					"id": "3",
+					"name": "claws",
+					"cost": "50",
+					"materiel": "0",
+					"photo": "mining",
+					"description": "dyminte go boom boom",
+					"gatherRate": "15",
+					"active": "false",
+					"priceGrowthRate": "5",
 					"amountOwned": "0"
 				}
 			],
@@ -45,19 +69,31 @@
 					"description": "Unpaid Intern",
 					"gatherRate": "1",
 					"active": "true",
-					"priceGrowthRate": "0.1",
+					"priceGrowthRate": "5",
 					"amountOwned": "0"
 				},
 				{
 					"id": "1",
 					"name": "Assembly 2",
-					"cost": "1",
+					"cost": "50",
 					"materiel": "0",
 					"photo": "build",
 					"description": "Flash",
-					"gatherRate": "100",
+					"gatherRate": "5",
 					"active": "true",
-					"priceGrowthRate": "0.1",
+					"priceGrowthRate": "5",
+					"amountOwned": "0"
+				},
+				{
+					"id": "2",
+					"name": "Assembly 3",
+					"cost": "150",
+					"materiel": "0",
+					"photo": "build",
+					"description": "Flash",
+					"gatherRate": "10",
+					"active": "true",
+					"priceGrowthRate": "5",
 					"amountOwned": "0"
 				}
 			],
@@ -71,7 +107,7 @@
 					"description": "Undergrad research assistant",
 					"gatherRate": "0.2",
 					"active": "true",
-					"priceGrowthRate": "0.25",
+					"priceGrowthRate": "5",
 					"amountOwned": "0"
 				}
 			]

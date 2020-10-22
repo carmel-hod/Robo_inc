@@ -18,25 +18,44 @@
                 android:layout_weight=".5"
                 android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/build"
+                <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight=".5"
-                    android:clickable="true"
-                    android:onClick="build"
-                    android:src="@drawable/build"
-                    android:background="#900"/>
+                    android:layout_weight=".5">
+                    <ImageButton
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:background="#900"
+                        android:src="@drawable/b1"
+                        android:id="@+id/build"/>
+                    <ImageView
+                        android:paddingTop="20dp"
+                        android:paddingRight="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/build_head"
+                        android:src="@drawable/b2"/>
+                </RelativeLayout>
 
-                <ImageButton
+                <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight=".5"
-                    android:id="@+id/mine"
-                    android:clickable="true"
-                    android:onClick="mine"
-                    android:background="#009"
-                    android:src="@drawable/mining"/>
+                    android:layout_weight=".5">
+                    <ImageButton
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:background="#009"
+                        android:src="@drawable/m3"
+                        android:id="@+id/mine"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/pick"
+                        android:src="@drawable/m1"/>
+                </RelativeLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -44,25 +63,42 @@
                 android:layout_height="0dp"
                 android:layout_weight=".5"
                 android:orientation="horizontal">
-                <ImageButton
-                    android:id="@+id/advertise"
+                <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight=".5"
-                    android:background="#009"
-                    android:clickable="true"
-                    android:onClick="advertise"
-                    android:src="@drawable/add"/>
+                    android:layout_weight=".5">
+                    <ImageButton
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:background="#009"
+                        android:id="@+id/advertise"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/advertiseImage"
+                        android:src="@drawable/add"/>
+                </RelativeLayout>
 
-                <ImageButton
+                <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight=".5"
-                    android:id="@+id/reserch"
-                    android:clickable="true"
-                    android:onClick="reserch"
-                    android:background="#900"
-                    android:src="@drawable/ssci"/>
+                    android:layout_weight=".5">
+                    <ImageButton
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:background="#900"
+                        android:id="@+id/reserch"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/reserchImage"
+                        android:src="@drawable/ssci"/>
+                </RelativeLayout>
+
+
+
             </LinearLayout>
         </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

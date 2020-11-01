@@ -2,5 +2,7 @@
     <string name="app_name">Robo inc.</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Autoclickers</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_notifications">Settings</string>
+    <string name="lab">laboratory</string>
+    <string name="restart">Restart</string>
 </resources>

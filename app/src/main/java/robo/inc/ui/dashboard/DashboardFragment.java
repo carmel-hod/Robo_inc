@@ -32,7 +32,7 @@ import robo.inc.R;
 import robo.inc.autoclickers.Autoclicker_base;
 import robo.inc.autoclickers.Type;
 
-public class DashboardFragment extends Fragment {
+public class  DashboardFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter rowAdapter;
     private RecyclerView.LayoutManager layoutManager;

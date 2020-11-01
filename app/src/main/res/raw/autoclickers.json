@@ -1,12 +1,15 @@
 {
 	"gm": {
 		"resources" : {
-			"money" : 1000000,
+			"money" : 0,
 			"robots" : 0,
 			"hype" : 0,
 			"materials" : 0,
 			"science" : 0,
-			"date" : 0
+			"date" : 0,
+			"current_path_1" : 0,
+			"current_path_2" : 0,
+			"current_path_3" : 0
 		},
 		"autocliker": {
 			"mining": [
@@ -19,7 +22,7 @@
 					"description": "A guy with a pickaxe",
 					"gatherRate": "0.5",
 					"active": "true",
-					"priceGrowthRate": "5",
+					"priceGrowthRate": "0.05",
 					"amountOwned": "0"
 				},
 				{
@@ -31,7 +34,7 @@
 					"description": "dyminte go boom boom",
 					"gatherRate": "2",
 					"active": "false",
-					"priceGrowthRate": "5",
+					"priceGrowthRate": "0.05",
 					"amountOwned": "0"
 				},
 				{
@@ -43,7 +46,7 @@
 					"description": "dyminte go boom boom",
 					"gatherRate": "8",
 					"active": "false",
-					"priceGrowthRate": "5",
+					"priceGrowthRate": "0.05",
 					"amountOwned": "0"
 				},
 				{
@@ -55,7 +58,7 @@
 					"description": "dyminte go boom boom",
 					"gatherRate": "15",
 					"active": "false",
-					"priceGrowthRate": "5",
+					"priceGrowthRate": "0.05",
 					"amountOwned": "0"
 				}
 			],
@@ -69,7 +72,7 @@
 					"description": "Unpaid Intern",
 					"gatherRate": "1",
 					"active": "true",
-					"priceGrowthRate": "5",
+					"priceGrowthRate": "0.05",
 					"amountOwned": "0"
 				},
 				{
@@ -81,7 +84,7 @@
 					"description": "Flash",
 					"gatherRate": "5",
 					"active": "true",
-					"priceGrowthRate": "5",
+					"priceGrowthRate": "0.05",
 					"amountOwned": "0"
 				},
 				{
@@ -93,7 +96,7 @@
 					"description": "Flash",
 					"gatherRate": "10",
 					"active": "true",
-					"priceGrowthRate": "5",
+					"priceGrowthRate": "0.05",
 					"amountOwned": "0"
 				}
 			],
@@ -107,7 +110,7 @@
 					"description": "Undergrad research assistant",
 					"gatherRate": "0.2",
 					"active": "true",
-					"priceGrowthRate": "5",
+					"priceGrowthRate": "0.05",
 					"amountOwned": "0"
 				}
 			]

@@ -22,15 +22,14 @@ import androidx.navigation.ui.NavigationUI;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Date;
 import java.util.Random;
 
 import robo.inc.autoclickers.Autoclicker_base;
 
 public class MainActivity extends AppCompatActivity {
+    private AudioPlayer mp = new AudioPlayer();
 
     private TextView matrials;
     private Random rd = new Random();
@@ -76,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mp.playForever(getApplicationContext(), R.raw.megalovania);
     }
 
     @Override
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
+                R.id.navigation_home, R.id.navigation_autoclickers, R.id.navigation_settings, R.id.navigation_laboratory)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navView, navController);
@@ -137,11 +137,11 @@ public class MainActivity extends AppCompatActivity {
                         gm.hype*=0.99;
 
                         if(sinceLastSec == 0){
-                            matPerSec = gm.matrials - matLast;
+                            matPerSec = gm.materials - matLast;
                             sciPerSec = gm.scince_points - sciLast;
                             robotPerSec = gm.robots - robtLast;
                             hypePerSec = gm.hype - hypeLast;
-                            matLast = gm.matrials;
+                            matLast = gm.materials;
                             sciLast = gm.scince_points;
                             robtLast = gm.robots;
                             hypeLast = gm.hype;
@@ -166,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        mp.stop();
     }
 
 
@@ -174,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateUI(double matS, double sciS, double robtS, double hypeS) {
-        matrials.setText("M:" + shrinkNum((int) gm.matrials));
+        matrials.setText("M:" + shrinkNum((int) gm.materials));
         robots.setText("R:" + shrinkNum((int) gm.robots));
         money.setText("$:" + shrinkNum((int) gm.money));
         hype.setText("H:" + shrinkNum((int) gm.hype));
@@ -192,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void autoclickGenerate(){
         for(int i=0; i < gm.mining.size(); i++){
-            gm.matrials += gm.mining.get(i).getAmountOwned() * (gm.mining.get(i).getGatherSpeed()/10);
+            gm.materials += gm.mining.get(i).getAmountOwned() * (gm.mining.get(i).getGatherSpeed()/10);
         }
         for(int i=0; i < gm.science.size(); i++){
             gm.scince_points += gm.science.get(i).getAmountOwned() * (gm.science.get(i).getGatherSpeed()/10);
@@ -200,17 +201,17 @@ public class MainActivity extends AppCompatActivity {
         for(int i=0; i < gm.build.size(); i++){
             Autoclicker_base auto = gm.build.get(i);
             double materialNeeded = gm.manufacture_cost * auto.getAmountOwned() * auto.getGatherSpeed() / 10;
-            if(gm.matrials < materialNeeded){
-                gm.robots += (gm.matrials - gm.matrials%2)/2;
-                gm.matrials %= 2;
+            if(gm.materials < materialNeeded){
+                gm.robots += (int) gm.materials/gm.manufacture_cost;
+                gm.materials %= gm.manufacture_cost;
             }
             else{
                 gm.robots += auto.getAmountOwned() * (auto.getGatherSpeed()/10);
-                gm.matrials -= materialNeeded;
+                gm.materials -= materialNeeded;
             }
         }
     }
-    private void onCreateFileManagment() throws IOException {
+    public void onCreateFileManagment() throws IOException {
         File file = new File(getFilesDir(), "Auto.json");
         if(!file.exists() || wipeData == true){
             try (FileOutputStream stream = new FileOutputStream(file)) {
@@ -247,5 +248,9 @@ public class MainActivity extends AppCompatActivity {
             return (int)(num/(Math.pow(10.0,9))) + "B";
         }
         return "";
+    }
+
+    public void setWipeData(boolean wipeData) {
+        this.wipeData = wipeData;
     }
 }

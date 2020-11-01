@@ -1,0 +1,54 @@
+ {
+	"lab": {
+		"path1": [
+			{
+				"id": "0",
+				"name": "miner 1 upgrade",
+				"cost": 100,
+				"description": "Miner is 100 better%",
+				"effectType": 0,
+				"atutoclicker": "mining",
+				"autoclicker id": 0,
+				"increse": "100%"
+			},
+			{
+				"id": "1",
+				"name": "mining upgrade",
+				"cost": 500,
+				"description": "mining are 5% better",
+				"effectType": 1,
+				"atutoclicker": "mining",
+				"increse": "10%"
+			}
+		],
+		"path2": [
+			{
+				"id": "0",
+				"name": "clicker upgrade 1",
+				"cost": 100,
+				"description": "click 1 time more",
+				"effectType": 2,
+				"increse": 1
+			},
+			{
+				"id": 1,
+				"name": "clicker upgrade 2",
+				"cost": 1000,
+				"description": "clicks 2 more times",
+				"effectType": 2,
+				"increse": 2
+			}
+		],
+		"path3": [
+			{
+				"id": "0",
+				"name": "sale increase",
+				"cost": 100,
+				"description": "robot cost and sales cost increase",
+				"effectType": 3,
+				"priceIncrease": 1,
+				"matIncrease": 1
+			}
+		]
+	}
+ }

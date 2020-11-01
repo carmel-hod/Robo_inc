@@ -24,7 +24,11 @@ public class AudioPlayer {
                 stop();
             }
         });
-
+        mMediaPlayer.start();
+    }
+    public void playForever(Context c, int rid){
+        mMediaPlayer = MediaPlayer.create(c, rid);
+        mMediaPlayer.setLooping(true);
         mMediaPlayer.start();
     }
 

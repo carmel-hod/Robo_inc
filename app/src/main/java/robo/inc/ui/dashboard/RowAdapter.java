@@ -3,15 +3,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import robo.inc.App;
@@ -40,9 +37,9 @@ public class RowAdapter extends RecyclerView.Adapter<RowAdapter.ViewHolder> {
             layout = v;
             x1 = v.findViewById(R.id.x1);
             x10 = v.findViewById(R.id.x10);
-            txtHeader = (TextView) v.findViewById(R.id.name);
+            txtHeader = (TextView) v.findViewById(R.id.name1);
             txtFooter = (TextView) v.findViewById(R.id.gathering_speed);
-            price = (TextView) v.findViewById(R.id.price);
+            price = (TextView) v.findViewById(R.id.price1);
             amount = (TextView) v.findViewById(R.id.amount);
             pic = (ImageView) v.findViewById(R.id.icon);
         }

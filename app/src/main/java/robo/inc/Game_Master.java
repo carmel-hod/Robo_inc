@@ -2,6 +2,7 @@ package robo.inc;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.widget.Switch;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,17 +28,20 @@ public class Game_Master {
     public List<Autoclicker_base> mining = new ArrayList<Autoclicker_base>();
     public List<Autoclicker_base> science = new ArrayList<Autoclicker_base>();
     public int money = 0;
-    public double matrials = 0;
+    public double materials = 0;
     public double scince_points = 0;
     public double  robots = 0;
     public double hype = 0;
-    public int gathering_rate = 1;
-    public int reserch_rate = 1;
-    public int manufacture_amount = 1;
+    public int clicker_rate = 1;
     public int manufacture_cost = 2;
     public int sellage_Amount = 1;
     public int robot_cost = 1;
     public long time = 0;
+    public int current_path_1 = 0;
+    public int current_path_2 = 0;
+    public int current_path_3 = 0;
+    public JSONObject lab;
+
 
     static private Game_Master singletone = null;
 
@@ -57,7 +61,7 @@ public class Game_Master {
                                 e.printStackTrace();
                             }
                         }
-                    }, 10);
+                    }, 2);
 
         }
         return singletone;
@@ -70,9 +74,12 @@ public class Game_Master {
                 "\t\t\t\"money\" : "+money+",\n" +
                 "\t\t\t\"robots\" : "+robots+",\n" +
                 "\t\t\t\"hype\" : "+hype+",\n" +
-                "\t\t\t\"materials\" : "+matrials+",\n" +
+                "\t\t\t\"materials\" : "+materials+",\n" +
                 "\t\t\t\"science\" : "+scince_points+",\n" +
-                "\t\t\t\"date\" : "+time+"\n" +
+                "\t\t\t\"date\" : "+time+",\n" +
+                "\t\t\t\"current_path_1\" : "+current_path_1+",\n" +
+                "\t\t\t\"current_path_2\" : "+current_path_2+",\n" +
+                "\t\t\t\"current_path_3\" : "+current_path_3+"\n" +
                 "\t\t}," +
                 "\n\t\"autocliker\":{\n" +
                 "\t\t\"mining\":[\n");
@@ -102,19 +109,25 @@ public class Game_Master {
 
     private void loadFromJson() throws IOException {
         String jsonString = (MainActivity.getInstance().loadFile("Auto.json"));
-        JSONObject jb = null;
+        //String jsonStringLab = (MainActivity.getInstance().loadFile("lab.json"));
+        JSONObject jb;
         try {
+            //lab = new JSONObject(jsonStringLab).getJSONObject("lab");
+            lab =  new JSONObject(loadJSON(R.raw.lab)).getJSONObject("lab");
             jb = new JSONObject(jsonString).getJSONObject("gm");
             JSONObject resources = jb.getJSONObject("resources");
             time = resources.getLong("date");
+
             loadAutoclickers(jb.getJSONObject("autocliker"));
 
             money = resources.getInt("money");
             hype = resources.getDouble("hype");
-            matrials = resources.getDouble("materials");
+            materials = resources.getDouble("materials");
             scince_points = resources.getDouble("science");
             robots = resources.getDouble("robots");
-
+            current_path_1 = resources.getInt("current_path_1");
+            current_path_2 = resources.getInt("current_path_2");
+            current_path_3 = resources.getInt("current_path_3");
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -123,11 +136,12 @@ public class Game_Master {
         offline();
     }
 
+
     private void offline() {
         int robotsMade  = 0;
         long offlineTime = (System.currentTimeMillis() / 1000L)- time;
         for(Autoclicker_base auto : mining) {
-            matrials += auto.getGatherSpeed()*auto.getAmountOwned() * offlineTime;
+            materials += auto.getGatherSpeed()*auto.getAmountOwned() * offlineTime;
         }
         for(Autoclicker_base auto : science) {
             scince_points += auto.getGatherSpeed()*auto.getAmountOwned() * offlineTime;
@@ -135,13 +149,13 @@ public class Game_Master {
         for(Autoclicker_base auto : build) {
             robotsMade += auto.getGatherSpeed()*auto.getAmountOwned() * offlineTime;
         }
-        if((robotsMade*2) <= matrials){
+        if((robotsMade*2) <= materials){
             robots += robotsMade;
-            matrials -= robotsMade*2;
+            materials -= robotsMade*2;
         }
         else{
-            robots+=((robotsMade*2) - matrials)/2;
-            matrials%=2;
+            robots+=((robotsMade*2) - materials)/2;
+            materials%=2;
         }
     }
 
@@ -199,24 +213,34 @@ public class Game_Master {
         return writer.toString();
     }
     public boolean gatherMatrials() {
-        matrials+=gathering_rate;
+        materials+=clicker_rate;
         return true;
     }
 
     public boolean makeRobot() {
-        if (matrials < manufacture_cost){
+        double manufacture_amount;
+        if (materials < manufacture_cost){
             return false;
         }
-        matrials-=manufacture_cost;
-        robots+=manufacture_amount;
+        if(materials < manufacture_cost*clicker_rate){
+            manufacture_amount = (int) materials / manufacture_cost;
+            materials -= manufacture_amount * manufacture_cost;
+            robots  += manufacture_amount;
+            return true;
+        }
+        else{
+            materials-=manufacture_cost*clicker_rate;
+            robots+=clicker_rate;
+        }
+
         return true;
     }
     public boolean advertise() {
-        hype+=100;
+        hype+=clicker_rate;
         return true;
     }
     public boolean reserch() {
-        scince_points+=reserch_rate;
+        scince_points+=clicker_rate;
         return true;
     }
 
@@ -250,7 +274,7 @@ public class Game_Master {
         double price = auto.getPrice();
         if (money >= price) {
             auto.setAmountOwned(auto.getAmountOwned() + 1);
-            auto.setPrice(price * 1+auto.getPriceGrowthRate());
+            auto.setPrice(price * (1+auto.getPriceGrowthRate()));
             money -= price;
         }
     }
@@ -259,7 +283,6 @@ public class Game_Master {
         Autoclicker_base auto = null;
         switch (type){
             case BUILD:
-                double price = build.get(id).getPrice();
                 auto = build.get(id);
                 break;
             case MINING:
@@ -280,5 +303,29 @@ public class Game_Master {
             money-= price10;
         }
     }
+    public void lab(JSONObject upgrade) throws JSONException {
+        switch(upgrade.getInt("effectType")) {
+            case 0 :
 
+                return;
+
+            case 1 :
+
+                return;
+
+            case 2 :
+                clicker_upgrade(upgrade);
+                return;
+
+            case 3 :
+                sale_increase(upgrade);
+        }
+    }
+    public void clicker_upgrade(JSONObject upgrade) throws JSONException {
+        clicker_rate += upgrade.getInt("increse");
+    }
+    public void sale_increase(JSONObject upgrade) throws JSONException {
+        manufacture_cost += upgrade.getInt("matIncrease");
+        robot_cost += upgrade.getInt("priceIncrease");
+    }
 }

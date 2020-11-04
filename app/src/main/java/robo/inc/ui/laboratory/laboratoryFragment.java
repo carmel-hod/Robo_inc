@@ -51,6 +51,7 @@ public class laboratoryFragment extends Fragment{
          TextView buy2 = root.findViewById(R.id.buy2);
          TextView buy3 = root.findViewById(R.id.buy3);
 
+
         try {
             name1.setText(research1.getString("name"));
             price1.setText(research1.getString("cost"));
@@ -61,24 +62,38 @@ public class laboratoryFragment extends Fragment{
             name3.setText(research3.getString("name"));
             price3.setText(research3.getString("cost"));
             description3.setText(research3.getString("description"));
+
+            if(gm.current_path_1 == gm.lab.getJSONArray("path1").length()-1){
+                buy1.setText("");
+                buy1.setClickable(false);
+            }
+            if(gm.current_path_2 == gm.lab.getJSONArray("path2").length()-1){
+                buy2.setText("");
+                buy2.setClickable(false);
+            }
+            if(gm.current_path_3 == gm.lab.getJSONArray("path3").length()-1){
+                buy3.setText("");
+                buy3.setClickable(false);
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
 
         buy1.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 try {
-                    if(gm.current_path_1 == gm.lab.getJSONArray("path1").length()){
+                    if(gm.current_path_1 == gm.lab.getJSONArray("path1").length()-1){
                         return;
 
                     }
-                    if(gm.money < research1.getInt("cost")){
+                    if(gm.scince_points < research1.getInt("cost")){
                         return;
                     }
                     gm.current_path_1++;
-                    gm.money -= research1.getInt("cost");
+                    gm.scince_points -= research1.getInt("cost");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -87,6 +102,10 @@ public class laboratoryFragment extends Fragment{
                     gm.lab(research1);
                     research1 = gm.lab.getJSONArray("path1").getJSONObject(gm.current_path_1);
                     change_upgrades(name1,price1,description1,research1);
+                    if(gm.current_path_1 == gm.lab.getJSONArray("path1").length()-1){
+                        buy1.setText("");
+                        buy1.setClickable(false);
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -98,15 +117,15 @@ public class laboratoryFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 try {
-                    if(gm.current_path_2 == gm.lab.getJSONArray("path2").length()){
+                    if(gm.current_path_2 == gm.lab.getJSONArray("path2").length()-1){
                         return;
 
                     }
-                    if(gm.money < research2.getInt("cost")){
+                    if(gm.scince_points < research2.getInt("cost")){
                         return;
                     }
                     gm.current_path_2++;
-                    gm.money -= research2.getInt("cost");
+                    gm.scince_points -= research2.getInt("cost");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -114,6 +133,10 @@ public class laboratoryFragment extends Fragment{
                     gm.lab(research2);
                     research2 = gm.lab.getJSONArray("path2").getJSONObject(gm.current_path_2);
                     change_upgrades(name2,price2,description2,research2);
+                    if(gm.current_path_2 == gm.lab.getJSONArray("path2").length()-1){
+                        buy2.setText("");
+                        buy2.setClickable(false);
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -125,15 +148,14 @@ public class laboratoryFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 try {
-                    if(gm.current_path_3 == gm.lab.getJSONArray("path3").length()){
+                    if(gm.current_path_3 == gm.lab.getJSONArray("path3").length()-1){
                         return;
-
                     }
-                    if(gm.money < research3.getInt("cost")){
+                    if(gm.scince_points < research3.getInt("cost")){
                         return;
                     }
                     gm.current_path_3++;
-                    gm.money -= research1.getInt("cost");
+                    gm.scince_points -= research3.getInt("cost");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -141,6 +163,10 @@ public class laboratoryFragment extends Fragment{
                     gm.lab(research3);
                     research3 = gm.lab.getJSONArray("path3").getJSONObject(gm.current_path_3);
                     change_upgrades(name3,price3,description3,research3);
+                    if(gm.current_path_3 == gm.lab.getJSONArray("path3").length()-1){
+                        buy3.setText("");
+                        buy3.setClickable(false);
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

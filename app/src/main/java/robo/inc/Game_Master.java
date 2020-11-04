@@ -27,7 +27,7 @@ public class Game_Master {
     public List<Autoclicker_base> build = new ArrayList<Autoclicker_base>();
     public List<Autoclicker_base> mining = new ArrayList<Autoclicker_base>();
     public List<Autoclicker_base> science = new ArrayList<Autoclicker_base>();
-    public int money = 0;
+    public double money = 0;
     public double materials = 0;
     public double scince_points = 0;
     public double  robots = 0;
@@ -79,8 +79,11 @@ public class Game_Master {
                 "\t\t\t\"date\" : "+time+",\n" +
                 "\t\t\t\"current_path_1\" : "+current_path_1+",\n" +
                 "\t\t\t\"current_path_2\" : "+current_path_2+",\n" +
-                "\t\t\t\"current_path_3\" : "+current_path_3+"\n" +
-                "\t\t}," +
+                "\t\t\t\"current_path_3\" : "+current_path_3+",\n" +
+                "\t\t\t\"clicker_rate\" : "+clicker_rate+",\n" +
+                "\t\t\t\"manufacture_cost\" : "+manufacture_cost+",\n"+
+                "\t\t\t\"robot_cost\" : "+robot_cost+"\n" +
+        "\t\t}," +
                 "\n\t\"autocliker\":{\n" +
                 "\t\t\"mining\":[\n");
         for(Autoclicker_base  auto: mining){
@@ -120,7 +123,7 @@ public class Game_Master {
 
             loadAutoclickers(jb.getJSONObject("autocliker"));
 
-            money = resources.getInt("money");
+            money = resources.getDouble("money");
             hype = resources.getDouble("hype");
             materials = resources.getDouble("materials");
             scince_points = resources.getDouble("science");
@@ -306,11 +309,11 @@ public class Game_Master {
     public void lab(JSONObject upgrade) throws JSONException {
         switch(upgrade.getInt("effectType")) {
             case 0 :
-
+                autoclicker_upgrade(upgrade);
                 return;
 
             case 1 :
-
+                autoclicker_class_upgrade(upgrade);
                 return;
 
             case 2 :
@@ -322,10 +325,58 @@ public class Game_Master {
         }
     }
     public void clicker_upgrade(JSONObject upgrade) throws JSONException {
-        clicker_rate += upgrade.getInt("increse");
+        clicker_rate += upgrade.getInt("increase");
     }
     public void sale_increase(JSONObject upgrade) throws JSONException {
         manufacture_cost += upgrade.getInt("matIncrease");
         robot_cost += upgrade.getInt("priceIncrease");
+    }
+    public void autoclicker_upgrade(JSONObject upgrade) throws JSONException {
+        double  increase;
+        switch(upgrade.getInt("class")) {
+            case 0 :
+                increase =mining.get(upgrade.getInt("autoId")).getGatherSpeed() +
+                        upgrade.getDouble("increase");
+
+                mining.get(upgrade.getInt("autoId")).setGatherSpeed(increase);
+                break;
+
+            case 1 :
+                increase =build.get(upgrade.getInt("autoId")).getGatherSpeed() +
+                        upgrade.getDouble("increase");
+
+                build.get(upgrade.getInt("autoId")).setGatherSpeed(increase);
+                break;
+
+            case 2 :
+                increase =science.get(upgrade.getInt("autoId")).getGatherSpeed() +
+                        upgrade.getDouble("increase");
+
+                science.get(upgrade.getInt("autoId")).setGatherSpeed(increase);
+                break;
+        }
+    }
+    public void autoclicker_class_upgrade(JSONObject upgrade) throws JSONException {
+        double  new_value;
+        switch(upgrade.getInt("class")) {
+            case 0 :
+                for (Autoclicker_base auto : mining){
+                    new_value = auto.getGatherSpeed()*upgrade.getDouble("new_value");
+                    auto.setGatherSpeed(new_value);
+                }
+                break;
+            case 1 :
+                for (Autoclicker_base auto : build){
+                    new_value = auto.getGatherSpeed()*upgrade.getDouble("new_value");
+                    auto.setGatherSpeed(new_value);
+                }
+                break;
+            case 2 :
+                for (Autoclicker_base auto : science){
+                    new_value = auto.getGatherSpeed()*upgrade.getDouble("new_value");
+                    auto.setGatherSpeed(new_value);
+                }
+                break;
+        }
     }
 }

@@ -24,6 +24,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.Locale;
 import java.util.Random;
 
 import robo.inc.autoclickers.Autoclicker_base;
@@ -175,15 +177,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateUI(double matS, double sciS, double robtS, double hypeS) {
-        matrials.setText("M:" + shrinkNum((int) gm.materials));
-        robots.setText("R:" + shrinkNum((int) gm.robots));
-        money.setText("$:" + shrinkNum((int) gm.money));
-        hype.setText("H:" + shrinkNum((int) gm.hype));
-        sci.setText("S:" + shrinkNum((int) gm.scince_points));
-        matrialsSpeed.setText("+" + String.format("%.1f", matS) + "/s");
-        robotSpeed.setText("+" + String.format("%.1f", robtS) + "/s");
-        hypeSpeed.setText("" + String.format("%.1f", hypeS) + "/s");
-        sciSpeed.setText("+" + String.format("%.1f", sciS) + "/s");
+        matrials.setText("M:" + shrinkNum(gm.materials));
+        robots.setText("R:" + shrinkNum(gm.robots));
+        if (shrinkNum(gm.money).equals("")) {
+            money.setText("you win the game");
+        }
+        else{
+            money.setText("$:" + shrinkNum(gm.money));
+        }
+        hype.setText("H:" + shrinkNum(gm.hype));
+        sci.setText("S:" + shrinkNum(gm.scince_points));
+        matrialsSpeed.setText("" + String.format(Locale.US,"%.1f", matS) + "/s");
+        robotSpeed.setText("" + String.format(Locale.US,"%.1f", robtS) + "/s");
+        hypeSpeed.setText("" + String.format(Locale.US,"%.1f", hypeS) + "/s");
+        sciSpeed.setText("" + String.format(Locale.US,"%.1f", sciS) + "/s");
         robots.setTypeface(null, Typeface.BOLD);
         hype.setTypeface(null, Typeface.BOLD);
         money.setTypeface(null, Typeface.BOLD);
@@ -234,18 +241,50 @@ public class MainActivity extends AppCompatActivity {
 
         return new String(bytes);
     }
-    public String shrinkNum(int num) {
+    public String shrinkNum(double num) {
         if(num < 1000){
-            return "" + num;
+            String numm = String.format(Locale.US,"%.1f", num);
+            return "" + numm;
         }
         else if(num >= 1000 && num < (Math.pow(10.0,6))){
-            return num/1000 + "K";
+            String numm = String.format(Locale.US,"%.1f", num/1000);
+            return numm + "K";
         }
         else if(num >= (Math.pow(10.0,6)) && num < (Math.pow(10.0,9))){
-            return (int)(num/(Math.pow(10.0,6))) + "M";
+            String numm = String.format(Locale.US,"%.1f", num/(Math.pow(10.0,6)));
+            return numm + "M";
         }
         else if(num >= (Math.pow(10.0,9)) && num < (Math.pow(10.0,12))){
-            return (int)(num/(Math.pow(10.0,9))) + "B";
+            String numm = String.format(Locale.US,"%.1f", num/(Math.pow(10.0,9)));
+            return numm + "B";
+        }
+        else if(num >= (Math.pow(10.0,12)) && num < (Math.pow(10.0,15))){
+            String numm = String.format(Locale.US,"%.1f", num/(Math.pow(10.0,12)));
+            return numm + "T";
+        }
+        else if(num >= (Math.pow(10.0,15)) && num < (Math.pow(10.0,18))){
+            String numm = String.format(Locale.US,"%.1f", num/(Math.pow(10.0,15)));
+            return numm + "Qu";
+        }
+        else if(num >= (Math.pow(10.0,18)) && num < (Math.pow(10.0,21))){
+            String numm = String.format(Locale.US,"%.1f", num/(Math.pow(10.0,18)));
+            return numm + "Qi";
+        }
+        else if(num >= (Math.pow(10.0,21)) && num < (Math.pow(10.0,24))){
+            String numm = String.format(Locale.US,"%.1f", num/(Math.pow(10.0,21)));
+            return numm + "Sx";
+        }
+        else if(num >= (Math.pow(10.0,24)) && num < (Math.pow(10.0,27))){
+            String numm = String.format(Locale.US,"%.1f", num/(Math.pow(10.0,24)));
+            return numm + "Sp";
+        }
+        else if(num >= (Math.pow(10.0,27)) && num < (Math.pow(10.0,30))){
+            String numm = String.format(Locale.US,"%.1f", num/(Math.pow(10.0,27)));
+            return numm + "Oc";
+        }
+        else if(num >= (Math.pow(10.0,30)) && num < (Math.pow(10.0,33))){
+            String numm = String.format(Locale.US,"%.1f", num/(Math.pow(10.0,30)));
+            return numm + "No";
         }
         return "";
     }

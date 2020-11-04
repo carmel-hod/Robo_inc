@@ -7,28 +7,47 @@
 				"cost": 100,
 				"description": "Miner is 100 better%",
 				"effectType": 0,
-				"atutoclicker": "mining",
-				"autoclicker id": 0,
-				"increse": "100%"
+				"class": 0,
+				"autoId": 0,
+				"increase": 0.5
 			},
 			{
 				"id": "1",
 				"name": "mining upgrade",
 				"cost": 500,
-				"description": "mining are 5% better",
+				"description": "mining are 10% better",
 				"effectType": 1,
-				"atutoclicker": "mining",
-				"increse": "10%"
+				"class": 0,
+				"new_value": 1.1
+			},
+			{
+				"id": "2",
+				"name": "miner 2 upgrade",
+				"cost": 700,
+				"description": "Miner 2 is 100 better%",
+				"effectType": 0,
+				"class": 0,
+				"autoId": 1,
+				"increase": 0.5
+			},
+			{
+				"id": "3",
+				"name": "robot upgrade",
+				"cost": 1000,
+				"description": "robots are 1% better",
+				"effectType": 1,
+				"class": 1,
+				"new_value": 1.1
 			}
 		],
 		"path2": [
 			{
-				"id": "0",
+				"id": 0,
 				"name": "clicker upgrade 1",
 				"cost": 100,
 				"description": "click 1 time more",
 				"effectType": 2,
-				"increse": 1
+				"increase": 1
 			},
 			{
 				"id": 1,
@@ -36,7 +55,23 @@
 				"cost": 1000,
 				"description": "clicks 2 more times",
 				"effectType": 2,
-				"increse": 2
+				"increase": 2
+			},
+			{
+				"id": 2,
+				"name": "clicker upgrade 3",
+				"cost": 2000,
+				"description": "clicks 1.25 more times",
+				"effectType": 2,
+				"increase": 1.25
+			},
+			{
+				"id": 3,
+				"name": "clicker upgrade 4",
+				"cost": 20000,
+				"description": "clicks 3 more times",
+				"effectType": 2,
+				"increase": 3
 			}
 		],
 		"path3": [
@@ -47,6 +82,15 @@
 				"description": "robot cost and sales cost increase",
 				"effectType": 3,
 				"priceIncrease": 1,
+				"matIncrease": 1
+			},
+			{
+				"id": "1",
+				"name": "sale increase 2",
+				"cost": 1000,
+				"description": "robot cost and sales cost increase",
+				"effectType": 3,
+				"priceIncrease": 2,
 				"matIncrease": 1
 			}
 		]

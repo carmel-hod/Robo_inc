@@ -12,13 +12,14 @@
         android:title="@string/title_dashboard" />
 
     <item
+        android:id="@+id/navigation_laboratory"
+        android:icon="@drawable/beaker"
+        android:title="@string/lab" />
+
+    <item
         android:id="@+id/navigation_settings"
         android:icon="@drawable/gear"
         android:title="@string/title_notifications" />
 
-    <item
-        android:id="@+id/navigation_laboratory"
-        android:icon="@drawable/beaker"
-        android:title="@string/lab" />
 
 </menu>

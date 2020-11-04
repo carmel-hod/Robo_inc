@@ -9,13 +9,16 @@
 			"date" : 0,
 			"current_path_1" : 0,
 			"current_path_2" : 0,
-			"current_path_3" : 0
+			"current_path_3" : 0,
+			"clicker_rate" : 1,
+			"manufacture_cost" : 2,
+			"robot_cost" : 1
 		},
 		"autocliker": {
 			"mining": [
 				{
 					"id": "0",
-					"name": "Miner",
+					"name": "Miner 1",
 					"cost": "5",
 					"materiel": "0",
 					"photo": "mining",
@@ -27,7 +30,7 @@
 				},
 				{
 					"id": "1",
-					"name": "sticks of dyminte",
+					"name": "Miner 2",
 					"cost": "20",
 					"materiel": "0",
 					"photo": "mining",
@@ -39,7 +42,7 @@
 				},
 				{
 					"id": "2",
-					"name": "Drill team",
+					"name": "Miner 3",
 					"cost": "50",
 					"materiel": "0",
 					"photo": "mining",
@@ -51,12 +54,84 @@
 				},
 				{
 					"id": "3",
-					"name": "claws",
+					"name": "Miner 4",
 					"cost": "50",
 					"materiel": "0",
 					"photo": "mining",
 					"description": "dyminte go boom boom",
 					"gatherRate": "15",
+					"active": "false",
+					"priceGrowthRate": "0.05",
+					"amountOwned": "0"
+				},
+				{
+					"id": "4",
+					"name": "Miner 5",
+					"cost": "200",
+					"materiel": "0",
+					"photo": "mining",
+					"description": "dyminte go boom boom",
+					"gatherRate": "40",
+					"active": "false",
+					"priceGrowthRate": "0.05",
+					"amountOwned": "0"
+				},
+				{
+					"id": "5",
+					"name": "Miner 6",
+					"cost": "1000",
+					"materiel": "0",
+					"photo": "mining",
+					"description": "dyminte go boom boom",
+					"gatherRate": "150",
+					"active": "false",
+					"priceGrowthRate": "0.05",
+					"amountOwned": "0"
+				},
+				{
+					"id": "6",
+					"name": "Miner 7",
+					"cost": "2000",
+					"materiel": "0",
+					"photo": "mining",
+					"description": "dyminte go boom boom",
+					"gatherRate": "310",
+					"active": "false",
+					"priceGrowthRate": "0.05",
+					"amountOwned": "0"
+				},
+				{
+					"id": "7",
+					"name": "Miner 8",
+					"cost": "10000",
+					"materiel": "0",
+					"photo": "mining",
+					"description": "dyminte go boom boom",
+					"gatherRate": "600",
+					"active": "false",
+					"priceGrowthRate": "0.05",
+					"amountOwned": "0"
+				},
+				{
+					"id": "8",
+					"name": "Miner 9",
+					"cost": "50000",
+					"materiel": "0",
+					"photo": "mining",
+					"description": "dyminte go boom boom",
+					"gatherRate": "1200",
+					"active": "false",
+					"priceGrowthRate": "0.05",
+					"amountOwned": "0"
+				},
+				{
+					"id": "9",
+					"name": "Miner 10",
+					"cost": "1000000",
+					"materiel": "0",
+					"photo": "mining",
+					"description": "dyminte go boom boom",
+					"gatherRate": "50000",
 					"active": "false",
 					"priceGrowthRate": "0.05",
 					"amountOwned": "0"
@@ -98,6 +173,42 @@
 					"active": "true",
 					"priceGrowthRate": "0.05",
 					"amountOwned": "0"
+				},
+				{
+					"id": "3",
+					"name": "Assembly 4",
+					"cost": "400",
+					"materiel": "0",
+					"photo": "build",
+					"description": "Flash",
+					"gatherRate": "20",
+					"active": "true",
+					"priceGrowthRate": "0.05",
+					"amountOwned": "0"
+				},
+				{
+					"id": "4",
+					"name": "Assembly 5",
+					"cost": "700",
+					"materiel": "0",
+					"photo": "build",
+					"description": "Flash",
+					"gatherRate": "35",
+					"active": "true",
+					"priceGrowthRate": "0.05",
+					"amountOwned": "0"
+				},
+				{
+					"id": "5",
+					"name": "Assembly 6",
+					"cost": "1500",
+					"materiel": "0",
+					"photo": "build",
+					"description": "Flash",
+					"gatherRate": "80",
+					"active": "true",
+					"priceGrowthRate": "0.05",
+					"amountOwned": "0"
 				}
 			],
 			"science": [
@@ -108,7 +219,31 @@
 					"materiel": "0",
 					"photo": "ssci",
 					"description": "Undergrad research assistant",
-					"gatherRate": "0.2",
+					"gatherRate": "0.5",
+					"active": "true",
+					"priceGrowthRate": "0.05",
+					"amountOwned": "0"
+				},
+				{
+					"id": "1",
+					"name": "Researcher 2",
+					"cost": "500",
+					"materiel": "0",
+					"photo": "ssci",
+					"description": "Undergrad research assistant",
+					"gatherRate": "2.5",
+					"active": "true",
+					"priceGrowthRate": "0.05",
+					"amountOwned": "0"
+				},
+				{
+					"id": "2",
+					"name": "Researcher 3",
+					"cost": "25000000000",
+					"materiel": "0",
+					"photo": "ssci",
+					"description": "Undergrad research assistant",
+					"gatherRate": "500000000",
 					"active": "true",
 					"priceGrowthRate": "0.05",
 					"amountOwned": "0"

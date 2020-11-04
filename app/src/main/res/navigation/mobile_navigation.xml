@@ -18,14 +18,15 @@
         tools:layout="@layout/fragment_autoclickers" />
 
     <fragment
+        android:id="@+id/navigation_laboratory"
+        android:name="robo.inc.ui.laboratory.laboratoryFragment"
+        android:label="@string/lab"
+        tools:layout="@layout/fragment_laboratory" />
+
+    <fragment
         android:id="@+id/navigation_settings"
         android:name="robo.inc.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 
-    <fragment
-        android:id="@+id/navigation_laboratory"
-        android:name="robo.inc.ui.laboratory.laboratoryFragment"
-        android:label="@string/lab"
-        tools:layout="@layout/fragment_laboratory" />
 </navigation>

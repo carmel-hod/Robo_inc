@@ -38,6 +38,13 @@
 				"effectType": 1,
 				"class": 1,
 				"new_value": 1.1
+			},
+			{
+				"id": "4",
+				"name": "",
+				"cost": "",
+				"description": "",
+				"effectType": ""
 			}
 		],
 		"path2": [
@@ -72,6 +79,13 @@
 				"description": "clicks 3 more times",
 				"effectType": 2,
 				"increase": 3
+			},
+			{
+				"id": "4",
+				"name": "",
+				"cost": "",
+				"description": "",
+				"effectType": ""
 			}
 		],
 		"path3": [
@@ -92,6 +106,13 @@
 				"effectType": 3,
 				"priceIncrease": 2,
 				"matIncrease": 1
+			},
+			{
+				"id": "2",
+				"name": "",
+				"cost": "",
+				"description": "",
+				"effectType": ""
 			}
 		]
 	}

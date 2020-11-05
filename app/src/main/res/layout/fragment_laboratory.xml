@@ -31,7 +31,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
-                        android:textSize="40sp" />
+                        android:textSize="40sp"
+                        android:textColor="#000000"/>
 
                     <TextView
                         android:id="@+id/buy1"
@@ -42,7 +43,7 @@
                         android:clickable="true"
                         android:textAlignment="center"
                         android:text="Buy"
-                        />
+                        android:textColor="#000000"/>
 
                 </TableRow>
                 <TableRow >
@@ -50,13 +51,14 @@
                         android:id="@+id/price1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textColor="#000000"/>
                     <TextView
                         android:id="@+id/description1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="" />
+                        android:textColor="#000000"/>
                 </TableRow>
 
 
@@ -84,7 +86,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
-                        android:textSize="40sp" />
+                        android:textSize="40sp"
+                        android:textColor="#000000"/>
 
                     <TextView
                         android:id="@+id/buy2"
@@ -95,7 +98,7 @@
                         android:clickable="true"
                         android:textAlignment="center"
                         android:text="Buy"
-                        />
+                        android:textColor="#000000"/>
 
                 </TableRow>
                 <TableRow >
@@ -103,13 +106,15 @@
                         android:id="@+id/price2"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textColor="#000000"/>
                     <TextView
                         android:id="@+id/description2"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="" />
+                        android:text="" android:textColor="#000000"
+                        />
                 </TableRow>
 
 
@@ -137,7 +142,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
-                        android:textSize="40sp" />
+                        android:textSize="40sp"
+                        android:textColor="#000000"/>
 
                     <TextView
                         android:id="@+id/buy3"
@@ -148,7 +154,7 @@
                         android:clickable="true"
                         android:textAlignment="center"
                         android:text="Buy"
-                        />
+                        android:textColor="#000000"/>
 
                 </TableRow>
                 <TableRow >
@@ -156,13 +162,14 @@
                         android:id="@+id/price3"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textColor="#000000"/>
                     <TextView
                         android:id="@+id/description3"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="" />
+                        android:textColor="#000000"/>
                 </TableRow>
 
 

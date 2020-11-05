@@ -16,4 +16,4 @@ You'll quickly realise that there doesn't seem to be any hype autoclickers, that
 ![Infobox](https://github.com/carmel-hod/Robo_inc/blob/master/photos/Capture.PNG)
 
 ## Laboratory
-if you move on to the next page you'll see that there are three different rectangles, Each one corresponds to a different upgrade. thare are three difrent upgraade paths and each one has multiple upgrades. There are lots of different upgrades but if you want to know them all you'll have to play the game.
+if you move on to the next page you'll see that there are three different rectangles, Each one corresponds to a different upgrade. Thare are three difrent upgraade paths and each one has multiple upgrades. There are lots of different upgrades but if you want to know them all you'll have to play the game.

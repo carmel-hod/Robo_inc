@@ -9,9 +9,10 @@ The top left one uses two materials to builds one robot. Great so now you have a
 
 Easy, if you go to the bottom left you'll see a button with a billboard on it. When you click it your hype will go up. The higher your hype the faster you sell robots. But beware hype will slowly go down over time so be sure to keep an eye on. But wait how do I check all of my inventory. If you look up you'll see five different numbers. The top one is your money and then from left to right it's robots, hype, materials, and science  (we'll talk about that later). 
 
-# Automation 
+## Automation 
 Now if you move on to the next page you'll see lots of diffrent autoclickers which can all be used to speed up your money making process.
 You'll quickly realise that there doesn't seem to be any hype autoclickers, that's because you have to keep your hype up on your own. Now that that's out of the way we can continue. On each of the autoclickers infobox you'll see an image corresponding to the autoclicker's type. It also contains it's name, price, gather rate, and the amount of them you have. The price will increase and the gather rate is per second. It also gives you the abilaty to buy one or ten.
 
-![Infobox](https://github
-com/carmel-hod/Robo_inc/blob/master/photos/Capture.PNG)
+![Infobox](https://github.com/carmel-hod/Robo_inc/blob/master/photos/Capture.PNG)
+
+## Laboratory
